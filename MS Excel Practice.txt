@@ -143,6 +143,8 @@ or use power query
 for instance if you need to enter 10 digits phone number then you can select the column and then goto data validation in data tools where you can goto settings and make error message
 - to create a drop down list go to data tab and then data validation and select the list and enter
 
+----------------------------------------------------------
+
 4. Chapter 4 - Logical Functions
 
 1 if
