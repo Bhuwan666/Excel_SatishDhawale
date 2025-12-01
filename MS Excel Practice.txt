@@ -1,0 +1,293 @@
+MS Excel Practice
+
+----------------------------------------------------------
+
+1. chapter 1 - Excel basics
+
+shortcut keys
+
+ctrl + right arrow/left arrow = last cell/front cell
+ctrl + mouse scroll = zoom
+ctrl + down arrow/up arrow = last row/first row
+ 
+range - c3:g9
+excel file - workbook 
+
+add sheet - shift + f11
+switch sheet - ctrl + pgUp/PgDn
+
+formula - =D3+D4  # we use mathematical formula 
+function - sum(D3:D4)  # we use inbuilt functions
+
+f12 - save as
+
+extension - .xlsx
+
+close workbook - ctrl + W
+new workbook - ctrl + N
+open workbook - ctrl + O
+
+create password from save as; tools
+create password in sheet, so no one can edit or delete; right click on sheet
+
+can easily rename sheet
+
+undo - ctrl + z
+redo - ctrl + y
+
+we can also see - average, count and sum from status bar
+
+modes - ready, enter and edit
+
+ctrl + shft and drag using mouse
+
+----------------------------------------------------------
+
+2. chapter 2 - Data entry and Basic formula
+
+goal - learn data entry, formatting, and basic formulas
+
+# select and drag to get numbers easy, like odd or even
+like 1,2,3,4,5... 
+
+or double tap 
+
+# column will be created before selected column
+
+add new column - ctrl + +   or  right click insert
+delete column - right click delete or ctrl + -
+same with the row - just select row
+
+# select all - ctrl + A or ctrl + shft + UpArrow/DnArrow
+
+- use font and styles from home
+
+# using numbers tab function tool for
+
+1. date formatting
+
+date format from home - number - last arrow down
+or ctrl + 1 - custom - edit general - dd-mm-yyy
+
+2. currency formatting
+
+3. generate random numbers 
+-use randbetween()
+-ctrl + r - fill right
+-ctrl + d - fill down  
+-to save random value copy and paste values 
+-alt + = - gives sum
+-once you use formula in one cell , you don't need to write formula again and again instead you can select the value and the ctrl + d ; this is called relatice reference in excel
+-to add a number for instance , we need to add 10 marks to all students that grace marks ; we use $d$24 or F4 after selecting that cell in formula like =(d2+d3) + $d$7; and then dragging ; this is called fixed referencing in excel
+
+4. do max, min, average, count using function or summation 
+
+5. use conditional formatting form styles tab for applying condition and color; like highlighting the numbers that met the condition 
+-highlight the duplicate numbers
+-use clear rules from styles tab to delete rules
+-use top ten performers/numbers from conditional formatting
+-use text that contains duplicate 
+-use conditional formatting for data bars, color scales, icon sets
+-just explore styles ; coditional formatting explore more rules
+-use advanced conditional formatting to select row of similar item to color; go to conditional formatting and new rules and use formula to determine which cell to format and format and apply
+-to remove; clear rules , entire sheet
+-if you want to select row using name of the cell then use =$B2=that cell name
+
+
+----------------------------------------------------------
+
+3. chapter 3 - Data cleaning and preparation
+
+- steps of data cleaning in excel
+
+1 remove duplicates
+- data tab, data tools, remove duplicate , select all or unselect all and then select the one column having duplicate items
+
+2 remove blank rows
+- right click row then delete but time wasting
+- instead do ; ctrl + G - go to specials and ctrl + -  
+
+3 remove blank spaces
+
+-types to remove spaces
+-1. breakable space(normal)
+- use len() functon to count length and use trim() function to remove blank spaces
+- inconsistent formula with green on corner says there is use of different formula
+
+-2. unbreakable spaces
+- use substitute function ; =substitute(A2,char(160),"")
+- and to replace certain word with another word ; =substitute(A2,"WH","QA")
+
+4 change case using formulas
+- use proper() function , upper(), and lower()
+- to delete column without getting the ref error ; first copy the values and paste it and then delete the column and rename it
+
+5 fix negative using formula
+- to replace negative value with zero and positive with the default value; use if(shell<0,0,shell)
+- delete column which are not necessary for data analysis
+
+6 split data
+-copy the wordwithout separator and paste and then use ctrl + E ; it's called flash fill
+or you can also go to data tab to data tools to flash fills , use it it is quick
+
+
+
+find() - to find specific char or symbol - =find("-",A2,1)
+left() - to write the word upto hyphon(-) for instance; then ; use =left(A2,find("-",A2,1)-1)
+we can also do that using right(); =right(A2,len(A2)-find("-",A2,1)); here no -1 
+ 
+so, its upto us to use flash fill or left/right or use test to column from data tools 
+or use power query
+
+- Data Validation 
+for instance if you need to enter 10 digits phone number then you can select the column and then goto data validation in data tools where you can goto settings and make error message
+- to create a drop down list go to data tab and then data validation and select the list and enter
+
+4. Chapter 4 - Logical Functions
+
+1 if
+- to clear the target condition ; we use if()
+- for instance; =if(D2>=73,"Completed","Incomplete")
+
+
+
+2 nesting if
+- for instance; =if(D3>15,D3*20%,if(D3>10,D3*15%,D3*10%))
+
+
+3 ifs
+- for instance; =IFS(D2>75000,D2*20%,D2>50000,D2*15%,D2<15000,D2*10%)
+
+
+4 and/or
+- =IF(AND(I2="Finance",J2>=5),"YES","NO")
+- and for compulsory
+
+- =IF(OR(I2="Finance",J2>=5),"YES","NO")
+- or for any one condition or both
+
+
+----------------------------------------------------------
+
+5. Chapter 5 - Sort and Filter
+
+- 1 Analysis using sort and filter
+- go to data tab ; sort 
+- go to add level and then by for sorting
+- use sort(): =SORT(A2:I11,2,1) ; 1 for ascending and -1 for descending order; last argument is not necessary
+
+- 2 Filter
+- fo to data tab and sort & filter and filter and clear the filter
+- explore text filter
+- search direct
+- begins with
+- =FILTER(A2:I11,D1:D11="Laptop")
+
+- ctrl + shft + right/down arrow - to select
+- ctrl + backspace - to go back to formula
+
+- 2 and Take formula
+- use data validation to select multiple columns
+
+- =TAKE(A2:F61,5)
+- =FILTER(A2:F61,C1:C61=I2) 
+- =SORT(FILTER(A2:F61,C1:C61=I2),6,-1)
+- =column(); get the column
+
+
+----------------------------------------------------------
+
+
+
+6. Chapter  6 - Vlookup and  Index
+
+- vlookup, match , index 
+- lookup formulas that mostly used in excel
+- vlookup - looks for the value in the left most column of a table and then returns a value in the same row from a column that you specify. By default, the table must be sorted in an ascending order.
+- =VLOOKUP(H2,A2:E51,2,0); o for false
+- to fix the error of relative ; just place $ in the shell in formula
+
+- to make it dynamic 
+- 1 temporarily - use 1,2,3,4,5 in column and use that shell in formula 
+- 2 permanently like while dragging down it must not show error; =VLOOKUP($H$2,$A$2:$E$51,ROW()-1,0)
+
+- select the table and edit the name of that table 
+- once edited it can only be renamed from formula tab under name manager to rename it from edit
+
+- =VLOOKUP(D2,Emp_Type,2,TRUE) ; true or 1 for approximate value ; and table must be in ascending order
+- no need to make it dynamic cause its using array table
+
+- match()
+- =MATCH(R4,A1:F1,0)
+
+- vlookup with match
+- =VLOOKUP($S$3,$A$1:$F$51,MATCH(R5,$A$1:$F$1,0),0)
+
+- for instance we have time table of classes, subject, day and time; 
+- we use
+row - =MATCH(B15,B2:B10,0)
+column - =MATCH(C14,D2:D10,0)
+index - =INDEX(A1:D10,C21,C22) ; here row and column are the above row and column 
+- =INDEX(A1:D10,MATCH(B15,A1:A10,0),MATCH(C14,A1:D1,0))
+
+
+----------------------------------------------------------
+
+
+7. Chapter 7 - Statistical formulas
+
+- sumif | sumifs - =SUMIF(C:C,I19,D:D)
+and - total sales by region as well as product - =SUMIFS($D:$D,$B:$B,$I27,$C:$C,J$26)
+
+- countif | countifs - =COUNTIFS($C:$C,$I10,$B:$B,J$9)
+- total sales by region - =COUNTIF($C$1:$C$61,I2)
+
+- averageif | averageifs - instead use averageif and averageifs 
+
+- maxif | maxifs - same
+- minifs | minifs
+
+----------------------------------------------------------
+
+
+8. Chapter 8 - Date formulas
+
+- day, month, year  - =DATE(YEAR(E2),MONTH(E2),DAY(E2))  or use general date 
+- can use day(), month(), year() separately
+- can use e2-e1 to find remaining dates
+
+- date
+
+- text - =TEXT(G2,"DD-MMM-YYYY")
+
+- eomonth
+
+- datedif  - to get the age use - =DATEDIF(F2,TODAY(),"Y")
+- to join text - =DATEDIF(F2,TODAY(),"Y")&" Years"
+- for all - =DATEDIF(F2,TODAY(),"Y")&" Years "&DATEDIF(F2,TODAY(),"YM")&" Months "&DATEDIF(F2,TODAY(),"MD")&" Days"
+
+- networkdays.intl - =NETWORKDAYS.INTL(E2,E501,11,M2:M3)
+
+
+----------------------------------------------------------
+
+
+
+9. Chapter 9 - Pivot table
+
+
+- create pivot table 
+- first copy all then insert tab  pivot table
+- we can change the values from value field setting
+- we can show all report filter from pivotable Analyze and from option goto show report filter pages, but there must be some column in filter
+
+- pivot chart
+- select the table then goto insert then pivot chart
+- to change chart type go to design and then goto change chart type
+
+- slicer 
+- to filter; pivotable analyze then goto insert slicer 
+
+- timeline
+- go to pivotTable Analyse and then insert Timeline
+- explore pivot table; its alot more
